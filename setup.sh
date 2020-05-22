@@ -3,8 +3,13 @@ echo "Starting Setup"
 
 #install cmake 3.15
 
-function install_cmake($version, $build)
+function install_cmake()
 {
+  local version=$1
+  local build=$2
+  
+  echo Installing cmake $version.$build
+  
   mkdir ./temp
   cd temp
   wget https://cmake.org/files/v$version/cmake-$version.$build.tar.gz
@@ -13,6 +18,15 @@ function install_cmake($version, $build)
   ./bootstrap
   make -j$(nproc)
   sudo make install
+}
+
+function test_cmd()
+{
+  if ! type "$@"; then
+  return false
+  else
+  return true
+  fi
 }
 
 $cmake_version = 3.16
@@ -28,7 +42,6 @@ fi
 else
 install_cmake($cmake_version, $cmake_build)
 fi
-
 
 # install python 3
 sudo apt install -y python3
