@@ -25,6 +25,7 @@ fi
 # add darcamo to conan remotes
 grep "darcamo-bintray" /tmp/conanremotes.txt
 if [$?=1]
+then
 conan remote add darcamo-bintray https://api.bintray.com/conan/darcamo/cppsim
 fi
 # set libstdc++ to a modern ABI
