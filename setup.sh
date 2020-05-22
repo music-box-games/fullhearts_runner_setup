@@ -3,23 +3,32 @@ echo "Starting Setup"
 
 #install cmake 3.15
 
+function install_cmake($version, $build)
+{
+  mkdir ./temp
+  cd temp
+  wget https://cmake.org/files/v$version/cmake-$version.$build.tar.gz
+  tar -xzvf cmake-$version.$build.tar.gz
+  cd make-$version.$build/
+  ./bootstrap
+  make -j$(nproc)
+  sudo make install
+}
+
+$cmake_version = 3.16
+$cmake_build = 5
+
 if type "$cmake" > /dev/null; then
 touch /tmp/cmakev.txt
 cmake --version >> /tmp/cmakev.txt
 if ! grep "3.16" /tmp/cmakev.txt; then
 sudo apt remove --purge --auto-remove cmake
-$version = 3.16
-$build = 5
-mkdir ./temp
-cd temp
-wget https://cmake.org/files/v$version/cmake-$version.$build.tar.gz
-tar -xzvf cmake-$version.$build.tar.gz
-cd make-$version.$build/
-./bootstrap
-make -j$(nproc)
-sudo make install
+install_cmake($cmake_version, $cmake_build)
 fi
+else
+install_cmake($cmake_version, $cmake_build)
 fi
+
 
 # install python 3
 sudo apt install -y python3
