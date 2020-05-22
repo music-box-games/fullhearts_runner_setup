@@ -28,9 +28,9 @@ then
 echo "Darcamo bintray not found. Adding..."
 conan remote add darcamo-bintray https://api.bintray.com/conan/darcamo/cppsim
 fi
-eval $(echo -e rm /tmp/conanremotes.txt)
+rm /tmp/conanremotes.txt)
 # set libstdc++ to a modern ABI
-eval $(echo -e conan profile update settings.compiler.libcxx=libstdc++11 default)
+echo -e conan profile update settings.compiler.libcxx=libstdc++11 default
 
 # set env variable to avoid redoing this all
 export WBUILD_RUNNER_SETUP=1>>~/.bashrc
