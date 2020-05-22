@@ -8,8 +8,7 @@ if [ ![-z "$WBUILD_RUNNER_SETUP"]]
     echo "WBUILD_RUNNER_SETUP set to 0, re-running full script"
   elif [$wval=1]
     echo "WBUILD_RUNNER_SETUP set to 1, nothing to be done"
-  else
-    echo "WBUILD_RUNNER_SETUP set to $WBUILD_RUNNER_SETUP, re-running full script"
+    exit 0
   fi
 fi
 
