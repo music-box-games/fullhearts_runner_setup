@@ -19,11 +19,13 @@ conan remote list >> /tmp/conanremotes.txt
 # add bincrafters to conan remotes
 if ! grep "conan-bincrafters" /tmp/conanremotes.txt > /dev/null
 then
+echo "Conan bincrafters not found. Adding..."
 conan remote add conan-bincrafters https://api.bintray.com/conan/bincrafters/public-conan
 fi
 # add darcamo to conan remotes
 if ! grep "darcamo-bintray" /tmp/conanremotes.txt > /dev/null
 then
+echo "Darcamo bintray not found. Adding..."
 conan remote add darcamo-bintray https://api.bintray.com/conan/darcamo/cppsim
 fi
 rm /tmp/conanremotes.txt
