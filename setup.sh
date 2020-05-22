@@ -39,10 +39,10 @@ touch /tmp/cmakev.txt
 cmake --version >> /tmp/cmakev.txt
 if ! grep "3.16" /tmp/cmakev.txt; then
 sudo apt remove --purge --auto-remove cmake
-install_cmake($cmake_version, $cmake_build)
+install_cmake "$cmake_version" "$cmake_build"
 fi
 else
-install_cmake($cmake_version, $cmake_build)
+install_cmake "$cmake_version" "$cmake_build"
 fi
 
 # install python 3
