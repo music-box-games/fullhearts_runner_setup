@@ -4,23 +4,6 @@ echo "Starting Setup"
 sudo apt update
 sudo apt upgrade -y
 
-function install_cmake()
-{
-  local version=$1
-  local build=$2
-  
-  echo Installing cmake $version.$build
-  
-  mkdir ./temp
-  cd temp
-  wget https://cmake.org/files/v$version/cmake-$version.$build.tar.gz
-  tar -xzvf cmake-$version.$build.tar.gz
-  cd make-$version.$build/
-  ./bootstrap
-  make -j$(nproc)
-  sudo make install
-}
-
 function test_cmd()
 {
   if ! type "$@"; then
@@ -37,12 +20,12 @@ cmake_build=5
 if type "$cmake" > /dev/null; then
 touch /tmp/cmakev.txt
 cmake --version >> /tmp/cmakev.txt
-if ! grep "3.16" /tmp/cmakev.txt; then
+if ! grep "3.17" /tmp/cmakev.txt; then
 sudo apt remove --purge --auto-remove cmake
-install_cmake "$cmake_version" "$cmake_build"
+sudo pip3 install cmake
 fi
 else
-install_cmake "$cmake_version" "$cmake_build"
+sudo pip3 install cmake
 fi
 
 # install python 3
