@@ -1,7 +1,8 @@
 #!/bin/bash
 echo "Starting Setup"
 
-#install cmake 3.15
+sudo apt update
+sudp apt upgrade -y
 
 function install_cmake()
 {
@@ -29,8 +30,9 @@ function test_cmd()
   fi
 }
 
-cmake_version = 3.16
-cmake_build = 5
+#install cmake 3.15
+cmake_version=3.16
+cmake_build=5
 
 if type "$cmake" > /dev/null; then
 touch /tmp/cmakev.txt
