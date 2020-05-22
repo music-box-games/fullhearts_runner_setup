@@ -29,8 +29,8 @@ function test_cmd()
   fi
 }
 
-$cmake_version = 3.16
-$cmake_build = 5
+cmake_version = 3.16
+cmake_build = 5
 
 if type "$cmake" > /dev/null; then
 touch /tmp/cmakev.txt
