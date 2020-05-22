@@ -30,6 +30,8 @@ pip3 install conan
 refreshenv 
 conan remote add conan-bincrafters https://api.bintray.com/conan/bincrafters/public-conan
 conan remote add darcamo-bintray  https://api.bintray.com/conan/darcamo/cppsim
+# set libstdc++ to a modern ABI
+conan profile update settings.compiler.libcxx=libstdc++11 default
 
 [System.Environment]::SetEnvironmentVariable('WBUILD_RUNNER_SETUP', '1', [System.EnvironmentVariableTarget]::User)
 Write-Host "Setup complete"

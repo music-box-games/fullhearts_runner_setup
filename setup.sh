@@ -17,6 +17,8 @@ sudo ln -s ~/.local/bin/conan /usr/bin/conan
 conan remote add conan-bincrafters https://api.bintray.com/conan/bincrafters/public-conan
 # add darcamo to conan remotes
 conan remote add darcamo-bintray https://api.bintray.com/conan/darcamo/cppsim
+# set libstdc++ to a modern ABI
+conan profile update settings.compiler.libcxx=libstdc++11 default
 
 # set env variable to avoid redoing this all
 export WBUILD_RUNNER_SETUP=1>>~/.bashrc
