@@ -17,12 +17,12 @@ sudo ln -fs ~/.local/bin/conan /usr/bin/conan
 touch /tmp/conanremotes.txt
 conan remote list >> /tmp/conanremotes.txt
 # add bincrafters to conan remotes
-if grep "conan-bincrafters" /tmp/conanremotes.txt
+if ! grep "conan-bincrafters" /tmp/conanremotes.txt > /dev/null
 then
 conan remote add conan-bincrafters https://api.bintray.com/conan/bincrafters/public-conan
 fi
 # add darcamo to conan remotes
-if grep "darcamo-bintray" /tmp/conanremotes.txt
+if ! grep "darcamo-bintray" /tmp/conanremotes.txt > /dev/null
 then
 conan remote add darcamo-bintray https://api.bintray.com/conan/darcamo/cppsim
 fi
