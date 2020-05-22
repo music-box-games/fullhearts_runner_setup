@@ -2,7 +2,7 @@
 echo "Starting Setup"
 
 sudo apt update
-sudp apt upgrade -y
+sudo apt upgrade -y
 
 function install_cmake()
 {
