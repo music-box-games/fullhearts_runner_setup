@@ -2,16 +2,19 @@
 echo "Starting Setup"
 # check if we've already done this
 if [ -z "$WBUILD_RUNNER_SETUP"]
-then
+  then
   echo "WBUILD_RUNNER_SETUP not defined, running full script"
 else
   $wval = $WBUILD_RUNNER_SETUP
   if [$wval=0]
-  then
+    then
     echo "WBUILD_RUNNER_SETUP set to 0, re-running full script"
   elif [$wval=1]
     echo "WBUILD_RUNNER_SETUP set to 1, nothing to be done"
     exit 0
+  else
+    echo "WBUILD_RUNNER_SETUP set to $WBUILD_RUNNER_SETUP, re-running full script"
+  fi
 fi
 
 # install python 3
