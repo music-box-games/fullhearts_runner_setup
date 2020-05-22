@@ -18,6 +18,7 @@ if ! type "$clang++-9" > /dev/null; then
 sudo apt install clang-9 -y
 sudo update-alternatives --install /usr/bin/c++ c++ /usr/bin/c++ 40
 sudo update-alternatives --install /usr/bin/c++ c++ /usr/bin/clang++-9 0
+sudo update-alternatives --set c++ /usr/bin/clang++-9
 fi
 
 
