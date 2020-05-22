@@ -17,12 +17,12 @@ else
   Write-Host "env:WBUILD_RUNNER_SETUP is not defined, running script"  
 }
 
-if(-not (Get-Command choco))
+if(-not (Get-Command -Name choco -ErrorAction SilentlyContinue))
 { 
   Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
   refreshenv
 }
-if(-not (Get-Command python3))
+if(-not (Get-Command -Name python3 -ErrorAction SilentlyContinue))
 {
   choco install python3
 }
