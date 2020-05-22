@@ -2,7 +2,7 @@
 echo "Starting Setup"
 # check if we've already done this
 if [ -z "$WBUILD_RUNNER_SETUP"]
-  then
+then
   echo "WBUILD_RUNNER_SETUP not defined, running full script"
 else
   $wval = $WBUILD_RUNNER_SETUP
@@ -12,6 +12,7 @@ else
   elif [$wval=1]
     echo "WBUILD_RUNNER_SETUP set to 1, nothing to be done"
     exit 0
+  fi
   fi
 fi
 
