@@ -17,8 +17,15 @@ else
   Write-Host "env:WBUILD_RUNNER_SETUP is not defined, running script"  
 }
 
-Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
-choco install python3
+if(-not (Get-Command choco))
+{ 
+  Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
+  refreshenv
+}
+if(-not (Get-Command python3))
+{
+  choco install python3
+}
 pip3 install conan
 refreshenv 
 conan remote add conan-bincrafters https://api.bintray.com/conan/bincrafters/public-conan
